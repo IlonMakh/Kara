@@ -1,0 +1,107 @@
+.promo {
+    color: $white;
+
+    .splide {
+        position: relative;
+        
+        &__track {
+            height: 100vh;
+        }
+
+        &__slide {
+            position: relative;
+
+            &-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            &-info {
+                position: absolute;
+                bottom: 5rem;
+                display: flex;
+                flex-direction: column;
+                max-width: 40%;
+
+                @media (max-width: $s-breakpoint) {
+                    max-width: 80%;
+                }
+            }
+
+            &-title {
+                font-size: 1.6rem;
+                letter-spacing: 0.13rem;
+                text-transform: uppercase;
+                margin-bottom: 2rem;
+            }
+
+            &-text {
+                letter-spacing: 0.03rem;
+                margin-bottom: 3rem;
+
+                @media (max-width: $s-breakpoint) {
+                    display: none;
+                }
+            }
+
+            &-btn {
+                position: relative;
+                letter-spacing: 0.05rem;
+                text-transform: uppercase;
+                width: fit-content;
+                padding: 0.5rem;
+                border-bottom: 2px solid $white;
+                transition: all 0.3s ease-in-out;
+                
+                span {
+                    position: relative;
+                    z-index: 2;
+                }
+
+                @include button-hover($black, $white);
+            }
+        }
+
+        .progress__wrapper {
+            position: absolute;
+            width: 5rem;
+            bottom: 10rem;
+            right: 10vw;
+        }
+
+        &__progress {
+            &__bar {
+                background-color: $white;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 5rem;
+                    bottom: 0;
+                    left: 0;
+                    height: 1px;
+                    background-color: $white;
+                }
+            }
+
+            &-num {
+                position: absolute;
+                top: 0;
+
+                &_current {
+                    left: 0;
+                    transform: translate(-140%, -50%);
+                }
+
+                &_total {
+                    right: 0;
+                    transform: translate(140%, -50%);
+                }
+            }
+        }
+    }
+}

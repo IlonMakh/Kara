@@ -1,0 +1,51 @@
+$black: black;
+$white: #ffff;
+
+$xxl-breakpoint: 1920px;
+$xl-breakpoint: 1440px;
+$l-breakpoint: 1280px;
+$md-breakpoint: 780px;
+$s-breakpoint: 560px;
+
+@mixin link-hover {
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background-color: currentColor;
+        transition: width 0.3s ease-out;
+    }
+
+    &:hover:after,
+    &:focus:after {
+        width: 100%;
+    }
+}
+
+
+@mixin button-hover($clr, $bg-clr) {
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: $bg-clr;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:hover:after,
+    &:focus:after {
+        height: 100%;
+    }
+
+    &:hover,
+    &:focus {
+        color: $clr;
+    }
+}

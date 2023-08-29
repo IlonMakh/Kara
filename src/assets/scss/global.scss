@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 12px;
+
+    @media (max-width: $xl-breakpoint) {
+        font-size: 10px;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 8px;
+    }
+}
+
+body {
+    font-family: 'Futura LT Pro', sans-serif;
+    color: $black;
+    font-size: 1.2rem;
+    background-color: $white;
+
+    &.hidden {
+        overflow: hidden;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: inherit;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+input {
+    font-family: inherit;
+    outline: none;
+    border: none;
+    background-color: inherit;
+    font-size: inherit;
+    border-radius: 0;
+
+    &::placeholder {
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+    }
+}
+
+select {
+    font-family: inherit;
+    outline: none;
+    border: none;
+    background-color: inherit;
+    font-size: inherit;
+    border-radius: 0;
+}
+
+button {
+    outline: none;
+    background: inherit;
+    border: inherit;
+    color: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#root, .App {
+    height: 100%;
+}
+
+.svg-sprites {
+    display: none;
+}
+
+.container {
+    width: 100%;
+    max-width: $xl-breakpoint;
+    margin: 0 auto;
+
+    @media (max-width: 1560px) {
+        max-width: $l-breakpoint;
+    }
+
+    @media (max-width: 1320px) {
+        max-width: 1024px;
+    }
+
+    @media (max-width: 1100px) {
+        max-width: $md-breakpoint;
+    }
+
+    @media (max-width: 800px) {
+        max-width: 80vw;
+    }
+}

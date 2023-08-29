@@ -1,0 +1,42 @@
+.about {
+    margin: 8rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__title {
+        margin-bottom: 4rem;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+    }
+
+    &__video {
+        margin-bottom: 4rem;
+        max-width: 90rem;
+        width: 55vw;
+        height: auto;
+
+        @media (max-width: $s-breakpoint) {
+            width: 70vw;
+        }
+    }
+
+    &__btn {
+        position: relative;
+        letter-spacing: 0.05rem;
+        text-transform: uppercase;
+        width: fit-content;
+        padding: 0.5rem;
+        border-bottom: 2px solid $black;
+        transition: all 0.3s ease-in-out;
+        
+        span {
+            position: relative;
+            z-index: 2;
+        }
+
+        @include button-hover($white, $black);
+    }
+}

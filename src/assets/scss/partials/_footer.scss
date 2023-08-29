@@ -1,0 +1,146 @@
+.footer {
+    background-color: $black;
+    color: $white;
+    padding: 3rem 0;
+
+    .container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 6rem;
+
+        @media (max-width: $l-breakpoint) {
+            flex-wrap: wrap;
+            row-gap: 2rem;
+        }
+
+        @media (max-width: $md-breakpoint) {
+            row-gap: 5rem;
+            justify-content: center;
+        }
+    }
+
+    &__logo {
+        font-size: 4rem;
+        align-self: center;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &__item {
+        @media (max-width: $md-breakpoint) {
+            min-width: 45%;
+            text-align: center;
+        }
+
+        &-title {
+            text-transform: uppercase;
+            margin-bottom: 1.4rem;
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        &-li {
+            transition: all 0.3s ease-in-out;
+
+            &:hover,
+            &:focus {
+                color: darkslategrey;
+            }
+        }
+
+        &-sm-list {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+
+            @media (max-width: $md-breakpoint) {
+                justify-content: center;
+            }
+        }
+
+        &-select {
+            width: 15rem;
+            height: 3rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            background-color: $white;
+
+            option {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__mail {
+        &-form {
+            position: relative;
+        }
+
+        &-input {
+            height: 3rem;
+            padding: 0.5rem;
+            background-color: $white;
+            color: $black;
+            width: 20rem;
+
+            &::placeholder {
+                transition: all 0.3s ease-in-out;
+            }
+
+            &:focus::placeholder {
+                transform: translate(100%);
+            }
+        }
+
+        &-send {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 3rem;
+            width: 6rem;
+            background-color: $black;
+            border: 1px solid $white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: $white;
+            transition: all 0.3s ease-in-out;
+
+            &:hover,
+            &:focus {
+                background-color: $white;
+            }
+
+            &:hover &-ico,
+            &:focus &-ico {
+                    color: darkslategrey;
+                }
+
+            &-ico {
+                width: 2rem;
+                height: 2rem;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+
+    &__sm-link-ico {
+        width: 1.7rem;
+        height: 1.7rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover,
+        &:focus {
+            color: darkslategrey;
+        }
+    }
+}
