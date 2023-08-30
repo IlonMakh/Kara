@@ -1,0 +1,156 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+
+    &__img {
+        position: relative;
+        width: 50%;
+
+        &-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            filter: grayscale(100%);
+        }
+
+        &-shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.86);
+        }
+
+        &-logo {
+            position: absolute;
+            text-transform: uppercase;
+            font-size: 8rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $white;
+            opacity: 0.2;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+        width: 50%;
+
+        &-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &-title {
+            font-size: 1.6rem;
+            text-transform: uppercase;
+        }
+
+        &-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            &-item {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                position: relative;
+
+                .password-ico {
+                    width: 2rem;
+                    height: 2rem;
+                    position: absolute;
+                    bottom: 0.5rem;
+                    right: 0.5rem;
+                    cursor: pointer;
+                }
+            }
+
+            &-label {
+                text-transform: uppercase;
+                cursor: pointer;
+            }
+
+            &-input {
+                height: 3rem;
+                padding: 0.5rem;
+                border: 1px solid $black;
+                width: 25rem;
+
+                &::placeholder {
+                    transition: all 0.4s ease-in-out;
+                }
+    
+                &:focus::placeholder {
+                    transform: translate(110%);
+                }
+            }
+
+            &-btn {
+                margin-top: 2rem;
+                position: relative;
+                letter-spacing: 0.05rem;
+                width: fit-content;
+                padding: 0.5rem 1rem;
+                border-bottom: 2px solid $black;
+                align-self: center;
+                transition: all 0.3s ease-in-out;
+                letter-spacing: 0.3rem;
+                width: 100%;
+
+                span {
+                    position: relative;
+                    z-index: 2;
+                }
+
+                @include button-hover($white, $black);
+            }
+        }
+
+        &-invite {
+            letter-spacing: 0.1rem;
+
+            &-link {
+                color: darkslategrey;
+                position: relative;
+                cursor: pointer;
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 1px;
+                    background-color: darkslategrey;
+                    bottom: -2px;
+                    left: 0;
+                    transition: all 0.3s ease-in-out;
+                }
+
+                &:hover::after,
+                &:focus::after {
+                    width: 0%;
+                }
+            }
+        }
+    }
+}
