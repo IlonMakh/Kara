@@ -3,9 +3,18 @@
     height: 100vh;
     display: flex;
 
+    @media (max-width: $s-breakpoint) {
+        flex-direction: column;
+    }
+
     &__img {
         position: relative;
         width: 50%;
+
+        @media (max-width: $s-breakpoint) {
+            width: 100%;
+            height: 15%;
+        }
 
         &-bg {
             position: absolute;
@@ -16,6 +25,10 @@
             object-fit: cover;
             object-position: top;
             filter: grayscale(100%);
+
+            @media (max-width: $s-breakpoint) {
+                object-position: center;
+            }
         }
 
         &-shadow {
@@ -38,6 +51,10 @@
             opacity: 0.2;
             transition: all 0.3s ease-in-out;
 
+            @media (max-width: $s-breakpoint) {
+                font-size: 5rem;
+            }
+
             &:hover {
                 opacity: 1;
             }
@@ -51,6 +68,11 @@
         justify-content: center;
         gap: 4rem;
         width: 50%;
+
+        @media (max-width: $s-breakpoint) {
+            width: 100%;
+            height: 85%;
+        }
 
         &-wrapper {
             display: flex;

@@ -71,7 +71,7 @@ export default function Header() {
                         </Link>
                         <Link
                             className="header__menu-aside-link"
-                            to={"/account"}>
+                            to={"/login"}>
                             <svg className="header__menu-aside-ico">
                                 <use href="#account" />
                             </svg>
