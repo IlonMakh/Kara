@@ -1,0 +1,75 @@
+.product {
+    &__params {
+        font-size: 1.4rem;
+        border-bottom: 1px solid $grey;
+
+        .container {
+            padding: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .product-param {
+                transition: all 0.3s ease-in-out;
+
+                .spin-plus {
+                    display: inline-block;
+                    width: 2rem;
+                    height: 2rem;
+                    text-align: center;
+                    line-height: 1.2;
+                    transition: all 0.3s ease-in-out;
+                }
+
+                &:hover {
+                    transform: scale(1.2);
+                }
+
+                &:hover .spin-plus {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+
+        &-favorite {
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                color: grey;
+            }
+
+            &.checked {
+                color: red;
+            }
+        }
+
+        &-buy {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+        }
+
+        &-price {
+            font-family: 'Futura LT Pro Heavy';
+        }
+
+        &-add {
+            text-transform: uppercase;
+            padding: 0.8rem 2rem;
+            background-color: $black;
+            border: 1px solid $black;
+            color: $white;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background-color: transparent;
+                color: $black;
+            }
+
+        }
+    }
+}

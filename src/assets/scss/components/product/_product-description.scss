@@ -1,0 +1,22 @@
+.product {
+    &__description {
+        .container {
+            padding-top: 7rem;
+            padding-bottom: 7rem;
+        }
+
+        &-title {
+            font-size: 8rem;
+            font-family: 'Walbaum';
+            margin-bottom: 3rem;
+            max-width: 55vw;
+            line-height: 1;
+        }
+
+        &-text {
+            max-width: 30vw;
+            line-height: 1.6;
+            letter-spacing: 0.1rem;
+        }
+    }
+}

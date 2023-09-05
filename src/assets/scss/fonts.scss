@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Futura LT Pro';
+    font-family: 'Futura LT Pro Bold';
     src: url('../fonts/FuturaLTPro-XBold.woff2') format('woff2'),
         url('../fonts/FuturaLTPro-XBold.woff') format('woff');
     font-weight: bold;
@@ -8,7 +8,7 @@
 }
 
 @font-face {
-    font-family: 'Futura LT Pro';
+    font-family: 'Futura LT Pro Medium';
     src: url('../fonts/FuturaLTPro-Medium.woff2') format('woff2'),
         url('../fonts/FuturaLTPro-Medium.woff') format('woff');
     font-weight: 500;
@@ -53,7 +53,7 @@
 }
 
 @font-face {
-    font-family: 'Futura LT Pro';
+    font-family: 'Futura LT Pro Heavy';
     src: url('../fonts/FuturaLTPro-Heavy.woff2') format('woff2'),
         url('../fonts/FuturaLTPro-Heavy.woff') format('woff');
     font-weight: 900;
@@ -61,3 +61,11 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Walbaum';
+    src: url('../fonts/Walbaum60pt-Regular.woff2') format('woff2'),
+        url('../fonts/Walbaum60pt-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

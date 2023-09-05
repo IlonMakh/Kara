@@ -1,0 +1,24 @@
+.product {
+    &__slider {
+        background-color: $grey;
+        height: 40rem;
+
+        .splide {
+            height: 100%;
+
+            &__track {
+                height: 100%;
+            }
+
+            &__slide {
+                height: 100%;
+    
+                &-img {
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+    }
+}

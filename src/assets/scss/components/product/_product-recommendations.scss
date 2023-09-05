@@ -1,0 +1,21 @@
+.product {
+    &__recommendations {
+        padding: 5rem 0;
+
+        &-title {
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            letter-spacing: 0.3rem;
+            margin-bottom: 4rem;
+        }
+
+        .catalog__card-favorite {
+            display: none;
+        }
+
+        .catalog__card,
+        .catalog__card-img {
+            width: fit-content;
+        }
+    }
+}
