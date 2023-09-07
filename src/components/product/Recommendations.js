@@ -19,6 +19,19 @@ export default function Recommendations({ recommendations }) {
                     drag: "free",
                     start: 1,
                     padding: "6rem",
+
+                    breakpoints: {
+                        1200: {
+                            padding: "2rem",
+                            perPage: 3,
+                        },
+                        680: {
+                            perPage: 2,
+                        },
+                        560: {
+                            perPage: 1,
+                        },
+                    },
                 }}>
                 <SplideTrack>
                     {recommendations.map((item) => (

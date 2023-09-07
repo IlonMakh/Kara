@@ -1,7 +1,18 @@
 .catalog {
     &__cards {
-        margin-top: 20rem;
+        margin-top: 5rem;
         margin-bottom: 5rem;
+
+        &-title {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 5rem;
+            margin-bottom: 5rem;
+
+            @media (max-width: $s-breakpoint) {
+                font-size: 3rem;
+            }
+        }
 
         .container {
             display: flex;
@@ -9,6 +20,10 @@
             align-items: center;
             justify-content: center;
             gap: 3rem;
+
+            @media (max-width: $md-breakpoint) {
+                font-size: 2rem;
+            }
         }
     }
 
@@ -95,6 +110,11 @@
             @media (max-width: 1560px) {
                 width: 25rem;
                 height: 32rem;
+            }
+
+            @media (max-width: $s-breakpoint) {
+                width: 34rem;
+                height: 41rem;
             }
 
             &__track {

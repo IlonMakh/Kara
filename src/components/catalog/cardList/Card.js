@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Card({ card }) {
     return (
-        <Link to={`/catalog/${card.id}`} className="catalog__card">
+        <div className="catalog__card">
             <div className="catalog__card-img">
                 <Splide
                     hasTrack={false}
@@ -17,11 +17,13 @@ export default function Card({ card }) {
                     <SplideTrack>
                         {card.images.map((img) => (
                             <SplideSlide className="splide__slide" key={img}>
-                                <img
-                                    className="splide__slide-img"
-                                    src={img}
-                                    alt="product"
-                                />
+                                <Link to={`/catalog/${card.id}`}>
+                                    <img
+                                        className="splide__slide-img"
+                                        src={img}
+                                        alt="product"
+                                    />
+                                </Link>
                             </SplideSlide>
                         ))}
                     </SplideTrack>
@@ -31,10 +33,10 @@ export default function Card({ card }) {
                     <use href="#favorite" />
                 </svg>
             </div>
-            <div className="catalog__card-info">
+            <Link to={`/catalog/${card.id}`} className="catalog__card-info">
                 <h4 className="catalog__card-title">{card.title}</h4>
                 <span className="catalog__card-price">{card.price}$</span>
-            </div>
-        </Link>
+            </Link>
+        </div>
     );
 }

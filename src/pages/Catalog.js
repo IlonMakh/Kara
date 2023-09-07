@@ -4,6 +4,7 @@ import Template from "../layouts/template";
 import img1 from '../assets/images/product_1.jpg';
 import img2 from '../assets/images/product_2.jpg';
 import img3 from '../assets/images/product_3.jpg';
+import Panel from "../components/catalog/Panel";
 
 export default function Catalog() {
     const cards = [
@@ -41,8 +42,9 @@ export default function Catalog() {
     ];
 
     return (
-        <Template>
+        <Template header={' bg-white'}>
             <>
+                <Panel />
                 <CardList cards={cards}/>
             </>
         </Template>

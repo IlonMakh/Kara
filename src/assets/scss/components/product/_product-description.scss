@@ -1,5 +1,6 @@
 .product {
     &__description {
+
         .container {
             padding-top: 7rem;
             padding-bottom: 7rem;
@@ -11,12 +12,25 @@
             margin-bottom: 3rem;
             max-width: 55vw;
             line-height: 1;
+
+            @media (max-width: $md-breakpoint) {
+                max-width: 100%;
+                font-size: 5rem;
+            }
         }
 
         &-text {
             max-width: 30vw;
             line-height: 1.6;
             letter-spacing: 0.1rem;
+
+            @media (max-width: $md-breakpoint) {
+                max-width: 70vw;
+            }
+
+            @media (max-width: $s-breakpoint) {
+                max-width: 100%;
+            }
         }
     }
 }

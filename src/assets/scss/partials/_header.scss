@@ -1,21 +1,40 @@
 .header {
-    //position: fixed;
     position: relative;
-    background-color: $grey;
-    color: black;
     top: 0;
     left: 0;
+    background-color: $grey;
+    color: black;
     padding: 2rem 0 1.4rem;
     width: 100%;
-    //color: $white;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     transition: all 0.4s ease-in-out;
     z-index: 100;
 
-    &.header_sticky,
+    &.p-fixed {
+        position: fixed;
+
+        &.header_sticky {
+            background-color: $white;
+            color: $black;
+        }
+    }
+
+    &.c-white {
+        color: $white;
+    }
+
+    &.bg-transparent {
+        background-color: transparent;
+    }
+
+    &.bg-white{
+        background-color: $white;
+    }
+
     &.mobile {
+        position: sticky;
         background-color: $white;
         color: $black;
     }

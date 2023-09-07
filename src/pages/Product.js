@@ -50,7 +50,7 @@ export default function Product() {
     const productId = useParams().id;
     const currentCard = cards.find((card) => (card.id = productId));
     return (
-        <Template>
+        <Template header={''}>
             <>
                 <Slider card={currentCard} />
                 <Params card={currentCard} />

@@ -7,10 +7,18 @@
             font-size: 1.4rem;
             letter-spacing: 0.3rem;
             margin-bottom: 4rem;
+
+            @media (max-width: $md-breakpoint) {
+                text-align: center;
+            }
         }
 
         .catalog__card-favorite {
             display: none;
+        }
+
+        .catalog__card {
+            margin: 0 auto;
         }
 
         .catalog__card,

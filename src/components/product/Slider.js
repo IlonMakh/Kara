@@ -11,6 +11,16 @@ export default function Slider({ card }) {
                     perMove: 1,
                     pagination: false,
                     arrows: false,
+                    breakpoints: {
+                        768: {
+                            perPage: 2,
+                            autoplay: true,
+                            type: 'loop',
+                        },
+                        560: {
+                            perPage: 1,
+                        },
+                    },
                 }}>
                 <SplideTrack>
                     {card.images.map((img) => (
@@ -23,6 +33,9 @@ export default function Slider({ card }) {
                         </SplideSlide>
                     ))}
                 </SplideTrack>
+                <div className="splide__progress">
+                    <div className="splide__progress__bar" />
+                </div>
             </Splide>
         </section>
     );

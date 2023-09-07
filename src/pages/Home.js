@@ -6,7 +6,7 @@ import Template from "../layouts/template";
 
 export default function Home() {
     return (
-        <Template>
+        <Template header={' p-fixed c-white bg-transparent'}>
             <>
                 <Promo />
                 <About />

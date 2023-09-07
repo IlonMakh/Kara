@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header({classes}) {
     const [isHeaderSticky, setIsHeaderSticky] = useState(false);
     const headerRef = useRef(null);
     const burgerRef = useRef(null);
@@ -45,7 +45,7 @@ export default function Header() {
     ];
 
     return (
-        <header className={headerClassName} ref={headerRef}>
+        <header className={headerClassName + classes} ref={headerRef}>
             <div className="container">
                 <div className="header__menu">
                     <nav className="header__menu-nav">

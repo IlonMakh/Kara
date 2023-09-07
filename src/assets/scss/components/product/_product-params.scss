@@ -1,7 +1,19 @@
 .product {
     &__params {
+        position: relative;
+        width: 100%;
+        background-color: $white;
         font-size: 1.4rem;
         border-bottom: 1px solid $grey;
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 100;
+
+        @media (max-width: 1024px) {
+            top: 14.4rem;
+            border-top: 1px solid $grey;
+        }
 
         .container {
             padding: 2rem 0;
@@ -54,7 +66,7 @@
         }
 
         &-price {
-            font-family: 'Futura LT Pro Heavy';
+            font-family: "Futura LT Pro Heavy";
         }
 
         &-add {
@@ -69,7 +81,94 @@
                 background-color: transparent;
                 color: $black;
             }
-
         }
+
+        .marquee {
+            position: relative;
+            width: 12vw;
+            left: 50%;
+            transform: translate(-50%, 0);
+            display: flex;
+            overflow: hidden;
+            user-select: none;
+            gap: 1rem;
+        
+            &__line {
+                flex-shrink: 0;
+                display: flex;
+                gap: 1rem;
+                justify-content: space-around;
+                min-width: 100%;
+                animation: marquee 8s linear infinite;
+        
+                &-text {
+                    flex: 0 0 auto;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.8rem;
+                    font-weight: 500;
+                    line-height: 120%;
+                    transition: all 0.1s ease-in-out;
+                }
+            }
+        }
+
+        &.mobile {
+            .container {
+                flex-direction: column;
+                width: 100%;
+                gap: 1.5rem;
+                font-size: 1.8rem;
+                padding: 1rem 0;
+            }
+
+            .product__params {
+                &-info {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    &-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 2rem;
+                    }
+                }
+
+                &-title {
+                    font-size: 1.8rem;
+                }
+
+                &-settings {
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    border: 1px solid $grey;
+
+                    .product-param {
+                        text-align: center;
+                    }
+                }
+
+                &-add {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-50);
+    }
+    100% {
+        transform: translateX(calc(-100% - 1rem));
     }
 }
