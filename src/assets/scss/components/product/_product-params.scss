@@ -8,10 +8,10 @@
         position: sticky;
         top: 0;
         left: 0;
-        z-index: 100;
+        z-index: 10;
 
         @media (max-width: 1024px) {
-            top: 14.4rem;
+            top: 14rem;
             border-top: 1px solid $grey;
         }
 
@@ -119,8 +119,7 @@
                 flex-direction: column;
                 width: 100%;
                 gap: 1.5rem;
-                font-size: 1.8rem;
-                padding: 1rem 0;
+                font-size: 2rem;
             }
 
             .product__params {
@@ -139,7 +138,12 @@
                 }
 
                 &-title {
-                    font-size: 1.8rem;
+                    font-size: 2rem;
+                }
+
+                &-favorite {
+                    width: 2.5rem;
+                    height: 2.5rem;
                 }
 
                 &-settings {
@@ -150,6 +154,11 @@
 
                     .product-param {
                         text-align: center;
+
+                        &:hover,
+                        &:active {
+                            transform: none;
+                        }
                     }
                 }
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Marquee from "../global/Marquee";
 
 export default function Params({ card }) {
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
     useEffect(() => {
         const handleResize = () => {

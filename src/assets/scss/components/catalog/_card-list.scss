@@ -60,6 +60,11 @@
             cursor: pointer;
             transition: all 0.3s ease-in-out;
 
+            @media (max-width: $md-breakpoint) {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+
             &:hover {
                 color: grey;
             }
@@ -123,6 +128,10 @@
 
             &__arrows {
                 display: none;
+
+                @media (max-width: 1024px) {
+                    display: block;
+                }
             }
 
             &__arrow {
