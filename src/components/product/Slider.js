@@ -15,7 +15,7 @@ export default function Slider({ card }) {
                         768: {
                             perPage: 2,
                             autoplay: true,
-                            type: 'loop',
+                            type: "loop",
                         },
                         560: {
                             perPage: 1,
@@ -33,10 +33,21 @@ export default function Slider({ card }) {
                         </SplideSlide>
                     ))}
                 </SplideTrack>
-                <div className="splide__progress">
-                    <div className="splide__progress__bar" />
-                </div>
             </Splide>
+            <div className="container">
+                <button className="product__slider-back">
+                    <svg className="product__slider-back-ico">
+                        <use href="#back" />
+                    </svg>
+                    <span>Back to category</span>
+                </button>
+                <div className="product__slider-info">
+                    <button className="product__slider-details">Details</button>
+                    <button className="product__slider-shipping">
+                        Shipping
+                    </button>
+                </div>
+            </div>
         </section>
     );
 }

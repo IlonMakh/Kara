@@ -2,6 +2,65 @@
     &__slider {
         background-color: $grey;
         height: 40rem;
+        position: relative;
+
+        .container {
+            position: absolute;
+            height: 40rem;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%);
+            pointer-events: none;
+        }
+
+        &-back {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: all;
+            transition: all 0.3s ease-in-out;
+
+            &-ico {
+                width: 1.6rem;
+                height: 1.6rem;
+            }
+
+            &:hover,
+            &:active {
+                color: grey;
+            }
+
+            @media (max-width: 1024px) {
+                top: 1rem;
+            }
+        }
+
+        &-info {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            pointer-events: all;
+            background-color: $grey;
+            padding: 0.5rem 0.5rem 1rem;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        &-details,
+        &-shipping {
+            transition: all 0.3s ease-in-out;
+
+            &:hover,
+            &:active {
+                color: grey;
+            }
+        }
 
         .splide {
             height: 100%;

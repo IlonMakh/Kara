@@ -27,6 +27,7 @@ export default function Recommendations({ recommendations }) {
                         },
                         680: {
                             perPage: 2,
+                            autoplay: true,
                         },
                         560: {
                             perPage: 1,

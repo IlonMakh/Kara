@@ -7,6 +7,11 @@ export default function Header({classes}) {
     const burgerRef = useRef(null);
     let headerClassName = 'header';
 
+    const toggleMenu = () => {
+        headerRef.current.classList.toggle('open');
+        document.body.classList.toggle('hidden');
+    }
+
     useEffect(() => {
         const handleScroll = () => {
             const headerHeight = headerRef.current.clientHeight;
@@ -19,10 +24,6 @@ export default function Header({classes}) {
             }
         };
 
-        const toggleMenu = () => {
-            headerRef.current.classList.toggle('open');
-            document.body.classList.toggle('hidden');
-        }
         const burgerBtn = burgerRef.current;
 
         window.addEventListener("scroll", handleScroll);
@@ -54,7 +55,9 @@ export default function Header({classes}) {
                                 <li key={link.to} className="header__menu-item">
                                     <Link
                                         className="header__menu-link"
-                                        to={link.to}>
+                                        to={link.to}
+                                        onClick={toggleMenu}
+                                        >
                                         {link.text}
                                     </Link>
                                 </li>
