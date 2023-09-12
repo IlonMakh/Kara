@@ -1,0 +1,58 @@
+.account__menu {
+    border-bottom: 1px solid $grey;
+    border-top: 1px solid $grey;
+    background-color: $white;
+    width: 100%;
+    position: sticky;
+    left: 0;
+    top: 0;
+    z-index: 10;
+
+    .container {
+        padding: 3rem 0;
+        position: relative;
+    }
+
+    &-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    &-item {
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: grey;
+        }
+
+        &.active {
+            position: relative;
+
+            &::after {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 1px;
+                background-color: $black;
+                bottom: -0.5rem;
+                left: 0;
+            }
+        }
+    }
+
+    &-out {
+        text-transform: capitalize;
+        position: absolute;
+        top: 3rem;
+        right: 0;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: grey;
+        }
+    }
+}
