@@ -88,13 +88,13 @@ export default function Header({classes}) {
                             <span className="basket-amount">8</span>
                         </Link>
                     </div>
-                    <div class="header__menu-btn" ref={burgerRef}>
-                        <div class="hamburger">
+                    <div className="header__menu-btn" ref={burgerRef}>
+                        <div className="hamburger">
                             <span></span>
                             <span></span>
                             <span></span>
                         </div>
-                        <div class="cross">
+                        <div className="cross">
                             <span></span>
                             <span></span>
                         </div>
