@@ -4,7 +4,7 @@ export default function Payment() {
     const [isEditMode, setIsEditMode] = useState(false);
     const [cardData, setCardData] = useState({
         name: "",
-        type: "visa",
+        type: "Visa",
         number: "",
         expires: "",
     });

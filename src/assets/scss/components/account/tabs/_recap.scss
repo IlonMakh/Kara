@@ -4,6 +4,17 @@
         align-items: center;
         width: 100%;
         position: relative;
+
+        @media (max-width: $s-breakpoint) {
+            justify-content: center;
+        }
+    }
+
+    &-item,
+    &-password {
+        @media (max-width: $s-breakpoint) {
+            width: 100%;
+        }
     }
 
     &-info,
@@ -15,6 +26,29 @@
     &-info,
     &-sections {
         padding: 8rem 0;
+
+        @media (max-width: $md-breakpoint) {
+            width: 50%;
+            padding: 6rem 0;
+        }
+
+        @media (max-width: $s-breakpoint) {
+            width: 70%;
+            padding: 4rem 0;
+        }
+
+    }
+
+    &-sections {
+        @media (max-width: $s-breakpoint) {
+            display: none;
+        }
+    }
+
+    &-info-form {
+        @media (max-width: $s-breakpoint) {
+            width: 100%;
+        }
     }
 
     &-info,
@@ -26,6 +60,10 @@
         position: relative;
         height: 100%;
 
+        @media (max-width: $s-breakpoint) {
+            align-items: center;
+        }
+
         &::after {
             position: absolute;
             content: '';
@@ -34,6 +72,10 @@
             top: 0;
             right: 20%;
             background-color: $grey;
+
+            @media (max-width: $s-breakpoint) {
+                display: none;
+            }
         }
     }
 
@@ -45,6 +87,11 @@
         display: flex;
         align-items: center;
         gap: 3rem;
+
+        @media (max-width: $s-breakpoint) {
+            justify-content: space-between;
+        }
+
     }
 
     &-profile {
@@ -77,6 +124,10 @@
         padding: 0.5rem;
         border-bottom: 1px solid $black;
         width: 60%;
+
+        @media (max-width: $s-breakpoint) {
+            width: 100%;
+        }
     }
 
     &-section {
@@ -118,6 +169,10 @@
         position: absolute;
         top: 0;
         right: 0;
+
+        @media (max-width: $md-breakpoint) {
+            display: none;
+        }
     }
 
     &-bg {

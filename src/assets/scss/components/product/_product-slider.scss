@@ -36,6 +36,10 @@
             @media (max-width: 1024px) {
                 top: 1rem;
             }
+
+            @media (max-width: $md-breakpoint) {
+                font-size: 1.4rem;
+            }
         }
 
         &-info {
@@ -55,6 +59,10 @@
         &-details,
         &-shipping {
             transition: all 0.3s ease-in-out;
+
+            @media (max-width: $md-breakpoint) {
+                font-size: 1.4rem;
+            }
 
             &:hover,
             &:active {

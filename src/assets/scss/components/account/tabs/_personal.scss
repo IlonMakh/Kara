@@ -79,6 +79,14 @@
         width: 50%;
         border: 1px solid $black;
         padding: 3rem 2rem;
+
+        @media (max-width: $md-breakpoint) {
+            width: 70%;
+        }
+
+        @media (max-width: $s-breakpoint) {
+            width: 100%;
+        }
     }
 
     &-label {
