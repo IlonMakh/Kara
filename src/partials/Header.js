@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 
 export default function Header({classes}) {
     const [isHeaderSticky, setIsHeaderSticky] = useState(false);
+    const [activeCategory, setActiveCategory] = useState('');
     const headerRef = useRef(null);
     const burgerRef = useRef(null);
     let headerClassName = 'header';
 
-    const toggleMenu = () => {
-        headerRef.current.classList.toggle('open');
-        document.body.classList.toggle('hidden');
+    const toggleMenu = (activeLink) => {
+        if (window.innerWidth <= 1024) {
+            headerRef.current.classList.toggle('open');
+            document.body.classList.toggle('hidden');
+        }
+
+        setActiveCategory(activeLink)
     }
 
     useEffect(() => {
@@ -38,12 +43,13 @@ export default function Header({classes}) {
     headerClassName = isHeaderSticky ? headerClassName + " header_sticky" : headerClassName;
     headerClassName = window.innerWidth <= 1024 ? headerClassName + " mobile" : headerClassName;
     const menuLinks = [
-        { to: "/catalog", text: "Bags" },
-        { to: "/catalog", text: "Women" },
-        { to: "/catalog", text: "Men" },
-        { to: "/catalog", text: "Children" },
-        { to: "/catalog", text: "Watches & Jewerly" },
+        { to: "/categories", text: "Bags" },
+        { to: "/categories", text: "Women" },
+        { to: "/categories", text: "Men" },
+        { to: "/categories", text: "Children" },
+        { to: "/categories", text: "Watches & Jewerly" },
     ];
+    const isActive = (category) => activeCategory === category ? "header__menu-link active" : "header__menu-link";
 
     return (
         <header className={headerClassName + classes} ref={headerRef}>
@@ -54,9 +60,9 @@ export default function Header({classes}) {
                             {menuLinks.map((link) => (
                                 <li key={link.to} className="header__menu-item">
                                     <Link
-                                        className="header__menu-link"
+                                        className={isActive(link.text)}
                                         to={link.to}
-                                        onClick={toggleMenu}
+                                        onClick={() => toggleMenu(link.text)}
                                         >
                                         {link.text}
                                     </Link>

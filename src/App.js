@@ -6,6 +6,7 @@ import Account from "./pages/Account";
 import AppSvg from "./components/global/AppSvg";
 import Login from "./pages/Login";
 import Product from "./pages/Product";
+import Categories from "./pages/Categories";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/categories" element={<Categories />} />
         <Route path="/basket" element={<Basket />} />
         <Route path="/account" element={<Account />} />
         <Route path="/login" element={<Login />} />
