@@ -7,6 +7,7 @@ import AppSvg from "./components/global/AppSvg";
 import Login from "./pages/Login";
 import Product from "./pages/Product";
 import Categories from "./pages/Categories";
+import BasketModal from "./components/basket/BasketModal";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/catalog/:id" element={<Product />} />
       </Routes>
 
+      <BasketModal />
       <AppSvg />
     </div>
   );
