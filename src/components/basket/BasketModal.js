@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import img from "../../assets/images/product_1.jpg";
 import BasketItem from "./basketModal/BasketItem";
+import SimpleBar from "simplebar-react";
+import "simplebar-react/dist/simplebar.min.css";
 
 export default function BasketModal() {
     const goodsData = [
@@ -18,6 +20,16 @@ export default function BasketModal() {
             id: 1,
             img,
             title: "Short jacket 2",
+            size: 36,
+            color: "black",
+            price: 4321,
+            amount: 2,
+        },
+
+        {
+            id: 2,
+            img,
+            title: "Short jacket 3",
             size: 36,
             color: "black",
             price: 4321,
@@ -65,7 +77,8 @@ export default function BasketModal() {
     );
 
     const commonSum = goods.reduce(
-        (accumulator, currentValue) => accumulator + (currentValue.amount * currentValue.price),
+        (accumulator, currentValue) =>
+            accumulator + currentValue.amount * currentValue.price,
         0
     );
 
@@ -81,17 +94,19 @@ export default function BasketModal() {
                     Shopping bag <sup>{commonAmount}</sup>
                 </h6>
                 {goods.length ? (
-                    <div className="basket-modal__content-list">
-                        {goods.map((item) => {
-                            return (
-                                <BasketItem
-                                    changeAmount={changeAmount}
-                                    deleteItem={deleteGood}
-                                    item={item}
-                                />
-                            );
-                        })}
-                    </div>
+                    <SimpleBar style={{ maxHeight: "55vh" }}>
+                        <div className="basket-modal__content-list">
+                            {goods.map((item) => {
+                                return (
+                                    <BasketItem
+                                        changeAmount={changeAmount}
+                                        deleteItem={deleteGood}
+                                        item={item}
+                                    />
+                                );
+                            })}
+                        </div>
+                    </SimpleBar>
                 ) : (
                     <div className="basket-modal__content-none">
                         You haven't added items to your shopping bag yet.
@@ -99,10 +114,14 @@ export default function BasketModal() {
                 )}
                 <div className="basket-modal__content-total">
                     <h6 className="basket-modal__content-subtotal">Subtotal</h6>
-                    <div className="basket-modal__content-sum">{commonSum}$</div>
+                    <div className="basket-modal__content-sum">
+                        {commonSum}$
+                    </div>
                 </div>
                 <div className="basket-modal__content-btns">
-                    <button className="basket-modal__content-checkout">Proceed to checkout</button>
+                    <button className="basket-modal__content-checkout">
+                        Proceed to checkout
+                    </button>
                 </div>
             </div>
         </div>

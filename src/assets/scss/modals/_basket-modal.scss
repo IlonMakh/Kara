@@ -26,12 +26,16 @@
         width: 50vw;
         height: 100%;
         background-color: $white;
-        padding: 7rem 0;
+        padding: 10vh 0;
+
+        @media (max-width: $md-breakpoint) {
+            width: 100vw;
+        }
 
         &-title {
             width: 80%;
             margin: 0 auto;
-            margin-bottom: 3rem;
+            margin-bottom: 3vh;
             text-transform: uppercase;
             font-size: 1.8rem;
             letter-spacing: 0.1rem;
@@ -44,35 +48,35 @@
         }
 
         &-list {
+            margin-bottom: 3vh;
+            height: fit-content;
             display: flex;
             flex-direction: column;
             gap: 4rem;
             align-items: center;
             justify-content: center;
-            margin-bottom: 3rem;
-            position: relative;
-
-            &:after {
-                content: '';
-                position: absolute;
-                left: 0;
-                bottom: -3rem;
-                width: 100%;
-                height: 2px;
-                background-color: $grey;
-            }
         }
 
         &-total {
-            padding: 3rem 0;
+            padding: 3vh 0;
             width: 80%;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             position: relative;
 
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 2px;
+                background-color: $grey;
+            }
+
             &:after {
-                content: '';
+                content: "";
                 position: absolute;
                 left: 0;
                 bottom: 0;
@@ -117,7 +121,7 @@
         position: relative;
 
         &:not(:last-child):after {
-            content: '';
+            content: "";
             position: absolute;
             left: 0;
             bottom: -2rem;

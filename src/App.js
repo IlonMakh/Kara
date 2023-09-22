@@ -8,10 +8,13 @@ import Login from "./pages/Login";
 import Product from "./pages/Product";
 import Categories from "./pages/Categories";
 import BasketModal from "./components/basket/BasketModal";
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
 
 function App() {
   return (
-    <div className="App">
+    <SimpleBar  style={{ maxHeight: "100vh" }}>
+      <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
@@ -22,9 +25,10 @@ function App() {
         <Route path="/catalog/:id" element={<Product />} />
       </Routes>
 
-      <BasketModal />
+      {/* <BasketModal /> */}
       <AppSvg />
     </div>
+    </SimpleBar>
   );
 }
 
