@@ -10,6 +10,8 @@ import Categories from "./pages/Categories";
 import BasketModal from "./components/basket/BasketModal";
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
+import SizeModal from "./components/product/SizeModal";
+import ColorModal from "./components/product/ColorModal";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
       </Routes>
 
       {/* <BasketModal /> */}
+      {/* <SizeModal /> */}
+      <ColorModal />
       <AppSvg />
     </div>
     </SimpleBar>
