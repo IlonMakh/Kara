@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Marquee from "../global/Marquee";
+import { useDispatch } from "react-redux";
+import { openModal } from "../../redux/actions/modalActions";
 
 export default function Params({ card }) {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -21,6 +23,14 @@ export default function Params({ card }) {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
+
+    const dispatch = useDispatch();
+
+    const handleOpenModal = (modalName) => {
+        dispatch(openModal(modalName));
+        console.log('open')
+    };
+
     return (
         <>
             {!isMobile && (
@@ -32,10 +42,10 @@ export default function Params({ card }) {
                         <svg className="product__params-favorite">
                             <use href="#favorite" />
                         </svg>
-                        <button className="product-param product__params-color">
+                        <button className="product-param product__params-color" onClick={() => handleOpenModal("color")}>
                             Color <span className="spin-plus">+</span>
                         </button>
-                        <button className="product-param product__params-size">
+                        <button className="product-param product__params-size" onClick={() => handleOpenModal("size")}>
                             Size <span className="spin-plus">+</span>
                         </button>
                         <div className="product__params-buy">
@@ -66,10 +76,10 @@ export default function Params({ card }) {
                             </span>
                         </div>
                         <div className="product__params-settings">
-                            <button className="product-param product__params-color">
+                            <button className="product-param product__params-color" onClick={() => handleOpenModal("color")}>
                                 Color <span className="spin-plus">+</span>
                             </button>
-                            <button className="product-param product__params-size">
+                            <button className="product-param product__params-size" onClick={() => handleOpenModal("size")}>
                                 Size <span className="spin-plus">+</span>
                             </button>
                         </div>

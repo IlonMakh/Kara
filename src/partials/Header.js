@@ -1,26 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { openModal } from "../redux/actions/modalActions";
+import { connect } from "react-redux";
 
-export default function Header({classes}) {
+function Header({ classes, wrapper }) {
     const [isHeaderSticky, setIsHeaderSticky] = useState(false);
-    const [activeCategory, setActiveCategory] = useState('');
+    const [activeCategory, setActiveCategory] = useState("");
     const headerRef = useRef(null);
     const burgerRef = useRef(null);
-    let headerClassName = 'header';
+    let headerClassName = "header";
 
     const toggleMenu = (activeLink) => {
         if (window.innerWidth <= 1024) {
-            headerRef.current.classList.toggle('open');
-            document.body.classList.toggle('hidden');
+            headerRef.current.classList.toggle("open");
+            document.body.classList.toggle("hidden");
         }
 
-        setActiveCategory(activeLink)
-    }
+        setActiveCategory(activeLink);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
             const headerHeight = headerRef.current.clientHeight;
             const scrollPosition = window.scrollY;
+            console.log("scroll");
 
             if (scrollPosition >= headerHeight) {
                 setIsHeaderSticky(true);
@@ -32,16 +36,21 @@ export default function Header({classes}) {
         const burgerBtn = burgerRef.current;
 
         window.addEventListener("scroll", handleScroll);
-        burgerBtn.addEventListener('click', toggleMenu);
+        burgerBtn.addEventListener("click", toggleMenu);
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
-            burgerBtn.removeEventListener('click', toggleMenu);
+            burgerBtn.removeEventListener("click", toggleMenu);
         };
     }, []);
 
-    headerClassName = isHeaderSticky ? headerClassName + " header_sticky" : headerClassName;
-    headerClassName = window.innerWidth <= 1024 ? headerClassName + " mobile" : headerClassName;
+    headerClassName = isHeaderSticky
+        ? headerClassName + " header_sticky"
+        : headerClassName;
+    headerClassName =
+        window.innerWidth <= 1024
+            ? headerClassName + " mobile"
+            : headerClassName;
     const menuLinks = [
         { to: "/categories", text: "Bags" },
         { to: "/categories", text: "Women" },
@@ -49,7 +58,16 @@ export default function Header({classes}) {
         { to: "/categories", text: "Children" },
         { to: "/categories", text: "Watches & Jewerly" },
     ];
-    const isActive = (category) => activeCategory === category ? "header__menu-link active" : "header__menu-link";
+    const isActive = (category) =>
+        activeCategory === category
+            ? "header__menu-link active"
+            : "header__menu-link";
+
+    const dispatch = useDispatch();
+
+    const handleOpenModal = (modalName) => {
+        dispatch(openModal(modalName));
+    };
 
     return (
         <header className={headerClassName + classes} ref={headerRef}>
@@ -62,8 +80,7 @@ export default function Header({classes}) {
                                     <Link
                                         className={isActive(link.text)}
                                         to={link.to}
-                                        onClick={() => toggleMenu(link.text)}
-                                        >
+                                        onClick={() => toggleMenu(link.text)}>
                                         {link.text}
                                     </Link>
                                 </li>
@@ -78,21 +95,19 @@ export default function Header({classes}) {
                                 <use href="#search" />
                             </svg>
                         </Link>
-                        <Link
-                            className="header__menu-aside-link"
-                            to={"/login"}>
+                        <Link className="header__menu-aside-link" to={"/login"}>
                             <svg className="header__menu-aside-ico">
                                 <use href="#account" />
                             </svg>
                         </Link>
-                        <Link
+                        <button
                             className="header__menu-aside-link"
-                            to={"/basket"}>
+                            onClick={() => handleOpenModal("basket")}>
                             <svg className="header__menu-aside-ico">
                                 <use href="#basket" />
                             </svg>
                             <span className="basket-amount">8</span>
-                        </Link>
+                        </button>
                     </div>
                     <div className="header__menu-btn" ref={burgerRef}>
                         <div className="hamburger">
@@ -106,7 +121,7 @@ export default function Header({classes}) {
                         </div>
                     </div>
                 </div>
-                <Link to={'/'} className="header__logo">
+                <Link to={"/"} className="header__logo">
                     <h1 className="header__logo-name">KARA</h1>
                     <img
                         className="header__logo-img"
@@ -133,3 +148,9 @@ export default function Header({classes}) {
         </header>
     );
 }
+
+const mapStateToProps = (state) => ({
+    wrapper: state.wrapper,
+});
+
+export default connect(mapStateToProps)(Header);

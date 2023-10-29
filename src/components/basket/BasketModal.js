@@ -3,8 +3,10 @@ import img from "../../assets/images/product_1.jpg";
 import BasketItem from "./basketModal/BasketItem";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
+import { connect } from "react-redux";
+import { closeModal } from "../../redux/actions/modalActions";
 
-export default function BasketModal() {
+function BasketModal({ modalName, isOpen, closeModal }) {
     const goodsData = [
         {
             id: 0,
@@ -82,10 +84,16 @@ export default function BasketModal() {
         0
     );
 
+    if (!isOpen) {
+        return null;
+    }
+
     return (
-        <div className="basket-modal">
-            <div className="basket-modal__content">
-                <button className="basket-modal__close">
+        <div className="basket-modal" onClick={() => closeModal(modalName)}>
+            <div className="basket-modal__content" onClick={(e) => e.stopPropagation()}>
+                <button
+                    className="basket-modal__close"
+                    onClick={() => closeModal(modalName)}>
                     <svg className="basket-modal__close-ico">
                         <use href="#close" />
                     </svg>
@@ -127,3 +135,13 @@ export default function BasketModal() {
         </div>
     );
 }
+
+const mapStateToProps = (state, ownProps) => ({
+    isOpen: state.modals[ownProps.modalName],
+});
+
+const mapDispatchToProps = {
+    closeModal,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BasketModal);

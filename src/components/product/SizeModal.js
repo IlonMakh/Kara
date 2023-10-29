@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { closeModal } from "../../redux/actions/modalActions";
 
-export default function SizeModal() {
+function SizeModal({ modalName, isOpen, closeModal }) {
     const product = {
         sizes: [
             {
@@ -32,7 +34,9 @@ export default function SizeModal() {
     };
     const [sizes, setSizes] = useState(product.sizes);
     const itemClass = (size) => {
-        return size.isActive ? "size-modal__content-item active" : "size-modal__content-item";
+        return size.isActive
+            ? "size-modal__content-item active"
+            : "size-modal__content-item";
     };
 
     const changeActive = (value) => {
@@ -43,13 +47,22 @@ export default function SizeModal() {
                 size.isActive = false;
             }
             return size;
-        })
+        });
         setSizes(updatedSizes);
+    };
+
+    if (!isOpen) {
+        return null;
     }
+
     return (
-        <div className="size-modal">
-            <div className="size-modal__content">
-                <button className="size-modal__close">
+        <div className="size-modal" onClick={() => closeModal(modalName)}>
+            <div
+                className="size-modal__content"
+                onClick={(e) => e.stopPropagation()}>
+                <button
+                    className="size-modal__close"
+                    onClick={() => closeModal(modalName)}>
                     <svg className="size-modal__close-ico">
                         <use href="#close" />
                     </svg>
@@ -59,7 +72,11 @@ export default function SizeModal() {
                     <div className="size-modal__content-list">
                         {sizes.map((size) => {
                             return (
-                                <button key={size.value} className={itemClass(size)} disabled={!size.isAvailable} onClick={() => changeActive(size.value)}>
+                                <button
+                                    key={size.value}
+                                    className={itemClass(size)}
+                                    disabled={!size.isAvailable}
+                                    onClick={() => changeActive(size.value)}>
                                     {size.value}
                                 </button>
                             );
@@ -70,3 +87,13 @@ export default function SizeModal() {
         </div>
     );
 }
+
+const mapStateToProps = (state, ownProps) => ({
+    isOpen: state.modals[ownProps.modalName],
+});
+
+const mapDispatchToProps = {
+    closeModal,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SizeModal);

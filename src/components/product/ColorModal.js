@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
 import img from "../../assets/images/product_2.jpg";
 import SimpleBar from "simplebar-react";
+import { connect } from "react-redux";
+import { closeModal } from "../../redux/actions/modalActions";
 
-export default function ColorModal() {
+function ColorModal({ modalName, isOpen, closeModal }) {
     const product = {
         colors: [
             {
@@ -60,7 +62,7 @@ export default function ColorModal() {
 
     const handleMouseWheel = (e) => {
         // Проверяем, что SimpleBar инициализирован
-        console.log(simpleBarRef)
+        console.log(simpleBarRef);
         if (simpleBarRef.current) {
             const deltaY = e.deltaY;
             const scrolledEl = simpleBarRef.current.contentWrapperEl;
@@ -71,10 +73,18 @@ export default function ColorModal() {
         }
     };
 
+    if (!isOpen) {
+        return null;
+    }
+
     return (
-        <div className="color-modal">
-            <div className="color-modal__content" >
-                <button className="color-modal__close">
+        <div className="color-modal" onClick={() => closeModal(modalName)}>
+            <div
+                className="color-modal__content"
+                onClick={(e) => e.stopPropagation()}>
+                <button
+                    className="color-modal__close"
+                    onClick={() => closeModal(modalName)}>
                     <svg className="color-modal__close-ico">
                         <use href="#close" />
                     </svg>
@@ -83,7 +93,11 @@ export default function ColorModal() {
                     <h6 className="color-modal__content-title">
                         Select a color
                     </h6>
-                    <SimpleBar ref={simpleBarRef} style={{ maxWidth: "100%", visibility: "visible" }} onWheel={handleMouseWheel}>
+                    <SimpleBar
+                        ref={simpleBarRef}
+                        style={{ maxWidth: "100%", visibility: "visible" }}
+                        autoHide={false}
+                        onWheel={handleMouseWheel}>
                         <div className="color-modal__content-list">
                             {colors.map((color) => {
                                 return (
@@ -112,3 +126,13 @@ export default function ColorModal() {
         </div>
     );
 }
+
+const mapStateToProps = (state, ownProps) => ({
+    isOpen: state.modals[ownProps.modalName],
+});
+
+const mapDispatchToProps = {
+    closeModal,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ColorModal);
