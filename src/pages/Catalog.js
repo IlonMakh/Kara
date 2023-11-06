@@ -13,7 +13,8 @@ export default function Catalog() {
             images: [img1, img2, img3],
             isNew: true,
             title: "Short jacket",
-            price: "1,234"
+            price: 50,
+            amount: 1,
         },
 
         {
@@ -21,7 +22,8 @@ export default function Catalog() {
             images: [img2, img1, img3],
             isNew: true,
             title: "Short jacket",
-            price: "1,234"
+            price: 219,
+            amount: 1,
         },
 
         {
@@ -29,7 +31,8 @@ export default function Catalog() {
             images: [img3, img1, img2],
             isNew: true,
             title: "Short jacket",
-            price: "1,234"
+            price: 340,
+            amount: 1,
         },
 
         {
@@ -37,7 +40,8 @@ export default function Catalog() {
             images: [img2, img1, img3],
             isNew: true,
             title: "Short jacket",
-            price: "1,234"
+            price: 120,
+            amount: 1,
         }
     ];
 

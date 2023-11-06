@@ -13,39 +13,39 @@ export default function Product() {
     const cards = [
         {
             id: 0,
-            images: [img1, img2, img3, img2, img1],
+            images: [img1, img2, img3],
             isNew: true,
             title: "Short jacket",
-            price: "1,234",
-            description: "The absolute star of the new Black Sicily collection is black, the color of immortal elegance that encapsulates the most diverse facets of Dolce&Gabbana. They preserve the signature identity of the brand’s DNA, which is reworked in the light.",
+            price: 50,
+            amount: 1,
         },
 
         {
             id: 1,
-            images: [img1, img2, img3, img2, img1],
+            images: [img2, img1, img3],
             isNew: true,
             title: "Short jacket",
-            price: "1,234",
-            description: "The absolute star of the new Black Sicily collection is black, the color of immortal elegance that encapsulates the most diverse facets of Dolce&Gabbana. They preserve the signature identity of the brand’s DNA, which is reworked in the light.",
+            price: 219,
+            amount: 1,
         },
 
         {
             id: 2,
-            images: [img1, img2, img3, img2, img1],
+            images: [img3, img1, img2],
             isNew: true,
             title: "Short jacket",
-            price: "1,234",
-            description: "The absolute star of the new Black Sicily collection is black, the color of immortal elegance that encapsulates the most diverse facets of Dolce&Gabbana. They preserve the signature identity of the brand’s DNA, which is reworked in the light.",
+            price: 340,
+            amount: 1,
         },
 
         {
             id: 3,
-            images: [img1, img2, img3, img2, img1],
+            images: [img2, img1, img3],
             isNew: true,
             title: "Short jacket",
-            price: "1,234",
-            description: "The absolute star of the new Black Sicily collection is black, the color of immortal elegance that encapsulates the most diverse facets of Dolce&Gabbana. They preserve the signature identity of the brand’s DNA, which is reworked in the light.",
-        },
+            price: 120,
+            amount: 1,
+        }
     ];
     const productId = useParams().id;
     const currentCard = cards.find((card) => (card.id = productId));

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { openModal } from "../redux/actions/modalActions";
 import { connect } from "react-redux";
 
-function Header({ classes, wrapper }) {
+function Header({ classes, basket }) {
     const [isHeaderSticky, setIsHeaderSticky] = useState(false);
     const [activeCategory, setActiveCategory] = useState("");
     const headerRef = useRef(null);
@@ -69,6 +69,11 @@ function Header({ classes, wrapper }) {
         dispatch(openModal(modalName));
     };
 
+    const commonAmount = basket.basket.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.amount,
+        0
+    );
+
     return (
         <header className={headerClassName + classes} ref={headerRef}>
             <div className="container">
@@ -106,7 +111,7 @@ function Header({ classes, wrapper }) {
                             <svg className="header__menu-aside-ico">
                                 <use href="#basket" />
                             </svg>
-                            <span className="basket-amount">8</span>
+                            <span className="basket-amount">{commonAmount}</span>
                         </button>
                     </div>
                     <div className="header__menu-btn" ref={burgerRef}>
@@ -151,6 +156,7 @@ function Header({ classes, wrapper }) {
 
 const mapStateToProps = (state) => ({
     wrapper: state.wrapper,
+    basket: state.basket,
 });
 
 export default connect(mapStateToProps)(Header);

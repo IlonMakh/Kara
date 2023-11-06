@@ -1,6 +1,19 @@
 import React from "react";
+import { connect, useDispatch } from "react-redux";
+import {
+    removeFromBasket,
+    changeAmount,
+} from "../../../redux/actions/basketActions";
 
-export default function BasketItem({ item, changeAmount, deleteItem }) {
+function BasketItem({ item }) {
+    const dispatch = useDispatch();
+    const changeAmountBasket = (operator, product) => {
+        dispatch(changeAmount(operator, product));
+    };
+
+    const deleteGood = (productId) => {
+        dispatch(removeFromBasket(productId));
+    };
     return (
         <div className="basket-modal__item">
             <div className="basket-modal__item-left">
@@ -14,16 +27,27 @@ export default function BasketItem({ item, changeAmount, deleteItem }) {
                         <div className="basket-modal__item-color">Color: {item.color}</div>
                     </div>
                     <div className="basket-modal__item-counter">
-                        <button className="basket-modal__item-minus" onClick={() => changeAmount("minus", item.id)}>&#8722;</button>
+                        <button className="basket-modal__item-minus" onClick={() => changeAmountBasket("minus", item)}>&#8722;</button>
                         <div className="basket-modal__item-amount">{item.amount}</div>
-                        <button className="basket-modal__item-plus" onClick={() => changeAmount("plus", item.id)}>&#43;</button>
+                        <button className="basket-modal__item-plus" onClick={() => changeAmountBasket("plus", item)}>&#43;</button>
                     </div>
                 </div>
             </div>
             <div className="basket-modal__item-right">
-                <button className="basket-modal__item-remove" onClick={() => deleteItem(item.id)}>Remove</button>
+                <button className="basket-modal__item-remove" onClick={() => deleteGood(item.id)}>Remove</button>
                 <p className="basket-modal__item-price">{item.price}$</p>
             </div>
         </div>
     );
 }
+
+const mapStateToProps = (state) => ({
+    basket: state.basket,
+});
+
+const mapDispatchToProps = {
+    removeFromBasket,
+    changeAmount
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BasketItem);
