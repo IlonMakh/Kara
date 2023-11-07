@@ -1,8 +1,18 @@
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import React from "react";
+import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addToFavorite, removeFromFavorite } from "../../../../redux/actions/basketActions";
 
-export default function Card({ card }) {
+function Card({ card, basket }) {
+    const dispatch = useDispatch();
+    const addedToFavorite = () => {
+        return basket.favorite.some((item) => item.id === card.id);
+    };
+
+    const handleFavoriteClick = () => {
+        addedToFavorite() ? dispatch(removeFromFavorite(card.id)) : dispatch(addToFavorite(card));
+    }
     return (
         <div className="catalog__card">
             <div className="catalog__card-img">
@@ -29,7 +39,7 @@ export default function Card({ card }) {
                     </SplideTrack>
                 </Splide>
                 <span className="catalog__card-new">new collection</span>
-                <svg className="catalog__card-favorite checked">
+                <svg className={addedToFavorite() ? "catalog__card-favorite checked" : "catalog__card-favorite"} onClick={handleFavoriteClick}>
                     <use href="#favorite" />
                 </svg>
             </div>
@@ -40,3 +50,14 @@ export default function Card({ card }) {
         </div>
     );
 }
+
+const mapStateToProps = (state) => ({
+    basket: state.basket,
+});
+
+const mapDispatchToProps = {
+    addToFavorite,
+    removeFromFavorite,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

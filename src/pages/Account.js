@@ -8,7 +8,6 @@ import Wishlist from "../components/account/tabs/Wishlist";
 
 export default function Account() {
     const [currentTab, setCurrentTab] = useState("Recap");
-    console.log(currentTab)
     const returnTab = () => {
         switch (currentTab) {
             case "Recap":

@@ -55,6 +55,10 @@
 
             &.checked {
                 color: red;
+
+                &:hover {
+                    color: grey;
+                }
             }
         }
 

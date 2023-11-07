@@ -47,8 +47,8 @@ export default function Product() {
             amount: 1,
         }
     ];
-    const productId = useParams().id;
-    const currentCard = cards.find((card) => (card.id = productId));
+    const productId = +useParams().id;
+    const currentCard = cards.find((card) => (card.id === productId));
     return (
         <Template header={''}>
             <>

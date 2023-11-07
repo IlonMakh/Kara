@@ -62,7 +62,6 @@ function ColorModal({ modalName, isOpen, closeModal }) {
 
     const handleMouseWheel = (e) => {
         // Проверяем, что SimpleBar инициализирован
-        console.log(simpleBarRef);
         if (simpleBarRef.current) {
             const deltaY = e.deltaY;
             const scrolledEl = simpleBarRef.current.contentWrapperEl;

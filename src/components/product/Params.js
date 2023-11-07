@@ -2,13 +2,21 @@ import React, { useEffect, useState } from "react";
 import Marquee from "../global/Marquee";
 import { connect, useDispatch } from "react-redux";
 import { openModal } from "../../redux/actions/modalActions";
-import { addToBasket } from "../../redux/actions/basketActions";
+import { addToBasket, addToFavorite, removeFromFavorite } from "../../redux/actions/basketActions";
 
 function Params({ card, basket }) {
+    const dispatch = useDispatch();
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const addedToCart = () => {
         return basket.basket.some((item) => item.id === card.id);
     };
+    const addedToFavorite = () => {
+        return basket.favorite.some((item) => item.id === card.id);
+    };
+
+    const handleFavoriteClick = () => {
+        addedToFavorite() ? dispatch(removeFromFavorite(card.id)) : dispatch(addToFavorite(card));
+    }
 
 
     useEffect(() => {
@@ -29,15 +37,11 @@ function Params({ card, basket }) {
         };
     }, []);
 
-    const dispatch = useDispatch();
-
     const handleOpenModal = (modalName) => {
         dispatch(openModal(modalName));
-        console.log("open");
     };
 
     const addProduct = () => {
-        console.log(card);
         dispatch(addToBasket(card));
     };
 
@@ -49,7 +53,7 @@ function Params({ card, basket }) {
                         <div className="product__params-title-wrapper">
                             <Marquee>{card.title}</Marquee>
                         </div>
-                        <svg className="product__params-favorite">
+                        <svg className={addedToFavorite() ? "product__params-favorite checked" : "product__params-favorite"} onClick={handleFavoriteClick}>
                             <use href="#favorite" />
                         </svg>
                         <button
@@ -81,7 +85,7 @@ function Params({ card, basket }) {
                     <div className="container">
                         <div className="product__params-info">
                             <div className="product__params-info-container">
-                                <svg className="product__params-favorite">
+                                <svg className={addedToFavorite() ? "product__params-favorite checked" : "product__params-favorite"} onClick={handleFavoriteClick}>
                                     <use href="#favorite" />
                                 </svg>
                                 <h4 className="product__params-title">
@@ -123,6 +127,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     addToBasket,
+    removeFromFavorite,
+    addToFavorite
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Params);

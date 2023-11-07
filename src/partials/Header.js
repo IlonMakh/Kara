@@ -24,7 +24,6 @@ function Header({ classes, basket }) {
         const handleScroll = () => {
             const headerHeight = headerRef.current.clientHeight;
             const scrollPosition = window.scrollY;
-            console.log("scroll");
 
             if (scrollPosition >= headerHeight) {
                 setIsHeaderSticky(true);
@@ -100,7 +99,7 @@ function Header({ classes, basket }) {
                                 <use href="#search" />
                             </svg>
                         </Link>
-                        <Link className="header__menu-aside-link" to={"/login"}>
+                        <Link className="header__menu-aside-link" to={"/account"}>
                             <svg className="header__menu-aside-ico">
                                 <use href="#account" />
                             </svg>

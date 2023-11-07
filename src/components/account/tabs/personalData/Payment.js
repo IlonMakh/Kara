@@ -12,10 +12,8 @@ export default function Payment() {
 
     const applyCard = (e) => {
         e.preventDefault();
-        console.log(cardData)
         const updatedCards = [...cards, cardData];
         setCards(updatedCards);
-        console.log(cards)
         
         setCardData({
             name: "",
@@ -29,7 +27,6 @@ export default function Payment() {
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
-        console.log(e.target);
 
         setCardData(prevCardData => ({
             ...prevCardData,
